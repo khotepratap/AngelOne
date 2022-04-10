@@ -1,0 +1,53 @@
+#AngelOne
+public static void main(String[] args) throws InterruptedException, EncryptedDocumentException, IOException {
+
+		FileInputStream open = new FileInputStream(Configuration.excelSheetPath);
+
+		Sheet readdata = WorkbookFactory.create(open).getSheet("Sheet1");
+
+		String Firstname = readdata.getRow(1).getCell(0).getStringCellValue();
+		System.out.println(Firstname);
+
+		String Lastname = readdata.getRow(1).getCell(1).getStringCellValue();
+		System.out.println(Lastname);
+
+		String Email = readdata.getRow(1).getCell(2).getStringCellValue();
+		System.out.println(Email);
+
+		String Confi_email = readdata.getRow(1).getCell(3).getStringCellValue();
+		System.out.println(Confi_email);
+
+		String Pass = readdata.getRow(1).getCell(4).getStringCellValue();
+		System.out.println(Pass);
+
+		String Day = readdata.getRow(1).getCell(5).getStringCellValue();
+		System.out.println(Day);
+
+		String Month = readdata.getRow(1).getCell(6).getStringCellValue();
+		System.out.println(Month);
+
+		String Year = readdata.getRow(1).getCell(7).getStringCellValue();
+		System.out.println(Year);
+
+		String Gender = readdata.getRow(1).getCell(8).getStringCellValue();
+		System.out.println(Gender);
+
+		System.setProperty("webdriver.chrome.driver", Configuration.driverpath);
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.get(Configuration.appUrl);
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//input[@name='firstname']")).sendKeys(Firstname);
+
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//input[@name='lastname']")).sendKeys(Lastname);
+
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//input[@name='reg_email__']")).sendKeys(Email);
+
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//input[@autocomplete='new-password']")).sendKeys(Pass);
+
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("(//input[@type='text'])[4]")).sendKeys(Confi_email);
