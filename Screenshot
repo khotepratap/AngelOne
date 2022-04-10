@@ -1,0 +1,14 @@
+#AngelOne
+public static void main(String[] args) throws IOException {
+		System.setProperty("webdriver.chrome.driver", "E:\\AUTOMATION FILES\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://www.facebook.com/signup");
+		
+		driver.manage().window().maximize();
+		File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		//here give  path of screenshot folder
+	File f = new File("E:\\AUTOMATION FILES\\Screenshot file\\image.jpg");
+	       FileHandler.copy(src, f);
+		
+	}
